@@ -12,9 +12,10 @@ def login_data():
     # Luo yhteys
     client = secretmanager.SecretManagerServiceClient()
 
-    # Määrittele salaisuuden polku
-    usernm = "projects/fall-week7-3/secrets/postgres-un/versions/latest"
-    passwd = "projects/fall-week7-3/secrets/postgres-pw/versions/latest"
+    # Määrittele salaisuuden polku:
+    # projects/<PROJEKTI>/secrets/<SALAISUUS>/versions/latest
+    usernm = "KÄYTTÄJÄNIMEN POLKU TÄHÄN"
+    passwd = "PASSUPOLKU TÄHÄN"
 
     # Avaa access salaisuuteen
     response_un = client.access_secret_version(request={"name": usernm})
