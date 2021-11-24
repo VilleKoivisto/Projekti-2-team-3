@@ -1,4 +1,5 @@
 env
+.dockerignore
 __pycache__/
 database.db
 .idea

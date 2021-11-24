@@ -9,6 +9,7 @@ from datetime import datetime
 
 # TODO: vois ehkä palauttaa con- ja cursor-muuttujat molemmat
 #       selkeyttäis koodia funktioissa
+
 def get_db_connection():
     con = psycopg2.connect(**config())
     cursor = con.cursor()
@@ -107,7 +108,7 @@ def create():
 
     return render_template('create.html')
 
-
+# muokkaa blogipostausta
 @app.route('/<int:id>/edit', methods=('GET', 'POST'))
 def edit(id):
     row = get_post(id)

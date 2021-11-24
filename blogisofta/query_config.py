@@ -1,21 +1,14 @@
 """ Init parser """
 
-from configparser import ConfigParser
+from get_login import login_data
 
-def config(filename='.\data\database.ini', section='postgresql'):
-    """ Parse database.ini """
-
-    parser = ConfigParser()
-    parser.read(filename)
-    db = {}
-
-    if parser.has_section(section):
-        params = parser.items(section)
-        
-        for param in params:
-            db[param[0]] = param[1]
+def config():
+    """ Palauta tietokannan yhteystiedot """
     
-    else:
-        raise Exception('Section {0} not found in the {1} file'.format(section, filename))
+    # käyttäjänimi ja passu haetaan Secret Managerista
+    user_name, passwd = login_data()
+
+    # host täytyy muuttaa vastaamaan postgresin ip:tä kubessa:
+    db = {'host': '<SQL-IP TÄHÄN>', 'database': 'blogi', 'port': '5432', 'user': user_name, 'password': passwd}
     
     return db

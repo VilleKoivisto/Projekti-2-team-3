@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blogi
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      run: blogi
+  template:
+    metadata:
+      labels:
+        run: blogi
+    spec:
+      containers:
+      - image: gcr.io/fall-week7-3/blogi-app:0.3
+        imagePullPolicy: IfNotPresent
+        name: blogi
+        ports:
+        - containerPort: 5000
+          protocol: TCP
