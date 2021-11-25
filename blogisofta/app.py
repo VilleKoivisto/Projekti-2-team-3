@@ -7,7 +7,7 @@ from flask import Flask, render_template, request, url_for, flash, redirect
 from werkzeug.exceptions import abort
 from datetime import datetime
 
-# TODO: vois ehkä palauttaa con- ja cursor-muuttujat molemmat
+# TODO: vois ehkä palauttaa con- ja cursor-muuttujat molemmat,
 #       selkeyttäis koodia funktioissa
 
 def get_db_connection():

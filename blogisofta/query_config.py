@@ -3,12 +3,12 @@
 from get_login import login_data
 
 def config():
-    """ Palauta tietokannan yhteystiedot """
+    """ Palauta tietokannan kirjautumistiedot """
     
-    # käyttäjänimi ja passu haetaan Secret Managerista
-    user_name, passwd = login_data()
+    # tietokannan ip, käyttäjänimi ja passu haetaan Secret Managerista
+    sql_ip, database, port, user_name, passwd = login_data()
 
-    # host täytyy muuttaa vastaamaan postgresin ip:tä kubessa:
-    db = {'host': '<SQL-IP TÄHÄN>', 'database': 'blogi', 'port': '5432', 'user': user_name, 'password': passwd}
+    # kirjautumistiedot sanakirjaan:
+    db = {'host': sql_ip, 'database': database, 'port': port, 'user': user_name, 'password': passwd}
     
     return db
