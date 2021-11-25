@@ -1,7 +1,10 @@
-h1 {
-    border: 2px #eee solid;
-    color: brown;
-    text-align: center;
-    padding: 10px;
-}
+body {
+    background-image: url("./peppa.png");
+    height: 1200px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+   }
 
+   h2 {color: white}
