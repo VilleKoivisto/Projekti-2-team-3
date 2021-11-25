@@ -4,6 +4,7 @@ metadata:
   name: blogi
   namespace: default
 spec:
+  replicas: 3
   selector:
     matchLabels:
       run: blogi
