@@ -14,7 +14,7 @@ spec:
         run: blogi
     spec:
       containers:
-      - image: gcr.io/fall-week7-3/blogi-app:0.3
+      - image: gcr.io/fall-week7-3/blogi-app:0.7
         imagePullPolicy: IfNotPresent
         name: blogi
         ports:
