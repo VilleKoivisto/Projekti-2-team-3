@@ -10,20 +10,28 @@ def login_data():
     """
 
     # Luo yhteys
-    # client = secretmanager.SecretManagerServiceClient()
+    client = secretmanager.SecretManagerServiceClient()
 
-    # # Määrittele salaisuuden polku:
-    # # projects/<PROJEKTI>/secrets/<SALAISUUS>/versions/latest
-    # usernm = "KÄYTTÄJÄNIMEN POLKU TÄHÄN"
-    # passwd = "PASSUPOLKU TÄHÄN"
+    # Määrittele salaisuuden polku:
+    # projects/<PROJEKTI>/secrets/<SALAISUUS>/versions/latest
+    sql_ip = "projects/1008256100655/secrets/postgres-ip/versions/latest"
+    database = "projects/1008256100655/secrets/postgres-database/versions/latest"
+    port = "projects/1008256100655/secrets/postgres-port/versions/latest"
+    username = "projects/1008256100655/secrets/postgres-un/versions/latest"
+    password = "projects/1008256100655/secrets/postgres-pw/versions/latest"
 
-    # # Avaa access salaisuuteen
-    # response_un = client.access_secret_version(request={"name": usernm})
-    # response_pw = client.access_secret_version(request={"name": passwd})
+    # Avaa access salaisuuteen
+    response_ip = client.access_secret_version(request={"name": sql_ip})
+    response_database = client.access_secret_version(request={"name": database})
+    response_port = client.access_secret_version(request={"name": port})
+    response_un = client.access_secret_version(request={"name": username})
+    response_pw = client.access_secret_version(request={"name": password})
 
-    # # Tulosta salaisuuden sisältö
-    # payload_un = response_un.payload.data.decode("UTF-8")
-    # payload_pw = response_pw.payload.data.decode("UTF-8")
+    # talleta salaisuus muuttujaan
+    payload_ip = response_ip.payload.data.decode("UTF-8")
+    payload_database = response_database.payload.data.decode("UTF-8")
+    payload_port = response_port.payload.data.decode("UTF-8")
+    payload_un = response_un.payload.data.decode("UTF-8")
+    payload_pw = response_pw.payload.data.decode("UTF-8")
     
-    # return payload_un, payload_pw
-    return "<KÄYTTÄJÄNIMI TÄHÄN>", "<SALASANA TÄHÄN>"
+    return payload_ip, payload_database, payload_port, payload_un, payload_pw
