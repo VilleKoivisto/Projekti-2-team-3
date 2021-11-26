@@ -2,23 +2,25 @@
 
 # Secret Manager client library
 from google.cloud import secretmanager
+import os
 
 def login_data():
     """
     Version id voi olla joko versionumero merkkijonomuodossa
     tai sit alias "latest", jos haluaa viimeisimmän.
     """
+    project_id = os.environ['PROJECT_ID']
 
     # Luo yhteys
     client = secretmanager.SecretManagerServiceClient()
 
     # Määrittele salaisuuden polku:
     # projects/<PROJEKTI>/secrets/<SALAISUUS>/versions/latest
-    sql_ip = "projects/1008256100655/secrets/postgres-ip/versions/latest"
-    database = "projects/1008256100655/secrets/postgres-database/versions/latest"
-    port = "projects/1008256100655/secrets/postgres-port/versions/latest"
-    username = "projects/1008256100655/secrets/postgres-un/versions/latest"
-    password = "projects/1008256100655/secrets/postgres-pw/versions/latest"
+    sql_ip = f"projects/{project_id}/secrets/postgres-ip/versions/latest"
+    database = f"projects/{project_id}/secrets/postgres-database/versions/latest"
+    port = f"projects/{project_id}/secrets/postgres-port/versions/latest"
+    username = f"projects/{project_id}/secrets/postgres-un/versions/latest"
+    password = f"projects/{project_id}/secrets/postgres-pw/versions/latest"
 
     # Avaa access salaisuuteen
     response_ip = client.access_secret_version(request={"name": sql_ip})
